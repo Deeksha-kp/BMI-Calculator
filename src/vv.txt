@@ -1,0 +1,94 @@
+import React, { useState } from 'react';
+
+function Bmi() {
+    const [weight, setWeight] = useState(0);
+    const [height, setHeight] = useState(0);
+
+    const getWeight = (e) => {
+        setWeight(e.target.value);
+        console.log(e.target.value);
+    };
+
+    const getHeight = (e) => {
+        setHeight(e.target.value);
+        console.log(e.target.value);
+    };
+
+    const calculate = () => {
+        if (height > 0) {
+            const res = weight / (height * height);
+            alert(`Your BMI is: ${res}`);
+        } else {
+            alert('Please enter a valid height.');
+        }
+    };
+
+    return (
+        <>
+            <div className='d-flex justify-content-center align-items-center' style={{ height: '90vh' }}>
+                <div className="w-50 border shadow p-4">
+                    <input type="number" onChange={getWeight} className='form-control my-3' placeholder='Enter weight in kg' />
+                    <input type="number" onChange={getHeight} className='form-control mb-3' placeholder='Enter height in meters' />
+                    <button onClick={calculate} className='btn btn-success'>Calculate BMI</button>
+                </div>
+            </div>
+        </>
+    );
+}
+
+export default Bmi;
+
+
+
+
+
+import React, { useState } from 'react'
+
+function Bmi() {
+    
+        let weight=0
+        let height=0
+        const [res,setRes]=useState(0)
+       
+    
+        const getWeight=(e)=>{
+            pamount=e.target.value
+            console.log(weight)
+        }
+        const getHeight=(e)=>{
+            rate=e.target.value
+            console.log(height);
+        }
+        const calculate=()=>{
+            // const res=weight/(height*height)
+            // alert(res)
+            setRes(weight/(height*height))
+            console.log(res);
+            if(res<18.5){
+                console.log("underweight!!");
+            }
+            else if(18.5<=res && res<24.9){
+                console.log("normal");
+            }
+            else{
+                console.log("obese");
+            }
+        }
+  return (
+    <>
+
+ <div className='d-flex justify-content-center align-items-center ' style={{height:'90vh'}}>
+    <div className="w-50 border shadow p-4">
+        <input type="number" onChange={(e)=>{getWeight(e)}} className='form-control my-3' placeholder='Enter weight' />
+        <input type="number" onChange={(e)=>{getHeight(e)}} className='form-control mb-3' placeholder='Enter height'/>
+
+        <button onClick={calculate} className='btn btn-success'>BMI</button>
+        <h4>{res}</h4>
+
+    </div>
+ </div>
+</>
+  )
+}
+
+export default Bmi
